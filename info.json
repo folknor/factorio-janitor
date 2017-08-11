@@ -1,0 +1,12 @@
+{
+	"name": "folk-janitor",
+	"version": "0.1.0",
+	"title": "Blueprint Janitor",
+	"description": "Instantly investigates and indiscriminately incinerates indistinguishable items from your inventory. Specifically, blueprints.",
+	"author": "folk",
+	"contact": "",
+	"homepage": "https://forums.factorio.com/viewtopic.php?f=94&t=45554",
+	"factorio_version": "0.15",
+	"dependencies": ["base"],
+	"license": "CC-BY-NC 4.0"
+}
