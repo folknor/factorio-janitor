@@ -1,6 +1,6 @@
 {
 	"name": "folk-janitor",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"title": "Blueprint Janitor",
 	"description": "Instantly investigates and indiscriminately incinerates indistinguishable items from your inventory. Specifically, blueprints.",
 	"author": "folk",
