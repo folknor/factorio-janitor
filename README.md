@@ -1,2 +1,3 @@
 # factorio-janitor
-Instantly investigates and indiscriminately incinerates indistinguishable items from your inventory. Specifically, blueprints.
+
+Instantly investigates and indiscriminately invites import of items to your inventory. Logistically, rationally. From blueprints, specifically.
