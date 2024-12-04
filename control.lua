@@ -12,7 +12,9 @@ local ERROR_CONFIG = {
 	sound_path = "utility/cannot_build",
 }
 local ERROR_NO_BLUEPRINT = { "folk-janitor.no-blueprint", }
+local ERROR_SECTION = { "folk-janitor.cant-add-section", }
 
+---@param p LuaPlayer
 local function clearSection(p)
 	local log = p.character.get_logistic_sections()
 	if not log or not log.valid then return end
@@ -30,6 +32,7 @@ local function clearSection(p)
 end
 
 script.on_event(defines.events.on_gui_click, function(event)
+	---@cast event OnGuiClick
 	if not event or not event.element or event.element.name ~= ID_BUTTON then return end
 	local p = game.players[event.player_index]
 	if not p or not p.valid or not p.connected or p.spectator or not p.character then return end
@@ -44,7 +47,9 @@ script.on_event(defines.events.on_gui_click, function(event)
 		return
 	end
 
+	---@type LuaItemStack|LuaRecord
 	local cs = p.cursor_stack
+
 	if not cs or not cs.valid then return end
 	if not cs.is_blueprint and not cs.is_blueprint_book then
 		cs = p.cursor_record
@@ -93,6 +98,10 @@ script.on_event(defines.events.on_gui_click, function(event)
 	end
 	if not s then
 		s = log.add_section(JANITOR)
+	end
+	if not s then
+		p.print(ERROR_SECTION, ERROR_CONFIG)
+		return
 	end
 
 	local multiplier = 1
