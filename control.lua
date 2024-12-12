@@ -2,7 +2,7 @@ local ui = require("mod-gui")
 
 
 local ID_BUTTON = "logistically-request-blueprint"
-local JANITOR = "Janitor"
+local JANITOR = "%s's Janitor"
 local TYPE_BLUEPRINT = "blueprint"
 local TYPE_ITEM = "item"
 local COMPARATOR = "="
@@ -20,7 +20,7 @@ local function clearSection(p)
 	if not log or not log.valid then return end
 
 	for i = log.sections_count, 1, -1 do
-		if log.sections[i].valid and log.sections[i].group == JANITOR then
+		if log.sections[i].valid and log.sections[i].group == JANITOR:format(p.name) then
 			-- We actually need to clear all the slots, believe it or not
 			local s = log.sections[i]
 			for j = s.filters_count, 1, -1 do
@@ -91,13 +91,13 @@ script.on_event(defines.events.on_gui_click, function(event)
 
 	-- ZZZ we tried to just do |local s = log.add_section("Janitor")| but it creates a new section every time.
 	for _, section in next, log.sections do
-		if section.group == JANITOR then
+		if section.group == JANITOR:format(p.name) then
 			s = section
 			break
 		end
 	end
 	if not s then
-		s = log.add_section(JANITOR)
+		s = log.add_section(JANITOR:format(p.name))
 	end
 	if not s then
 		p.print(ERROR_SECTION, ERROR_CONFIG)
